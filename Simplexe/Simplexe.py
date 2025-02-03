@@ -37,8 +37,8 @@ from typing import List, Optional
 #     Complexité spatiale : La complexité spatiale est de O(m×(n+m))O(m×(n+m)), ce qui est gérable pour des problèmes de taille modérée.
 # =================================================================================================
 
-### **Modèle**
-# > variable **x1** <- (nombre d'heure/element) Elec 100 ; **x2** <- (nombre d'heure/element) Elec 200
+### **Modèle exemple**
+# > variable x1 <- (nombre d'heure/element) Elec 100 ; x2 <- (nombre d'heure/element) Elec 200
 
 # 1. Function d'utilité est un bénef à maximiser:
 # 	*Z(x1, x2) = 100.x1 + 120.x2  *
