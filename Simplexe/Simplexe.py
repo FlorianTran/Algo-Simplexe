@@ -2,10 +2,11 @@ from typing import List, Optional
 
 # complexité algorithme Simplexe
 
-# Complexité Temporelle
+# **Complexité Temporelle**
 
 #     Initialisation :
-#         La création de la matrice des coefficients du bloc des contraintes et l'ajout des colonnes pour les variables d'écart ont une complexité de O(m×n)O(m×n), où mm est le nombre de contraintes et nn est le nombre de variables.
+#         La création de la matrice des coefficients du bloc des contraintes et l'ajout des colonnes pour les variables d'écart ont une complexité de O(m×n)O(m×n),
+#           où mm est le nombre de contraintes et nn est le nombre de variables.
 #         Le remplissage des colonnes des variables d'écart a une complexité de O(m)O(m).
 
 #     Calcul des vecteurs ZjZj et Cj−ZjCj−Zj :
@@ -22,15 +23,39 @@ from typing import List, Optional
 #         La mise à jour du vecteur QQ a une complexité de O(m)O(m).
 
 #     Itérations :
-#         Le nombre d'itérations nécessaires pour converger vers la solution optimale peut varier. Dans le pire des cas, la méthode du Simplexe peut nécessiter un nombre exponentiel d'itérations (complexité exponentielle), mais en pratique, elle converge généralement en un nombre polynomial d'itérations.
+#         Le nombre d'itérations nécessaires pour converger vers la solution optimale peut varier. Dans le pire des cas, la méthode du Simplexe peut nécessiter un
+#           nombre exponentiel d'itérations (complexité exponentielle) exemple pathologiques (Klee-Minty) ou le pivot viste presque tout les sommets,
+#           mais en pratique, elle converge généralement en un nombre polynomial d'itérations.
 
 # Complexité Spatiale
-#     La complexité spatiale est principalement déterminée par la taille de la matrice des contraintes et des vecteurs utilisés. La matrice des contraintes a une taille de O(m×(n+m))O(m×(n+m)) (en tenant compte des variables d'écart), et les vecteurs ZjZj, Cj−ZjCj−Zj, coef_pivotcoef_pivot, vdbvdb, et ratioratio ont une taille de O(n+m)O(n+m).
+#     La complexité spatiale est principalement déterminée par la taille de la matrice des contraintes et des vecteurs utilisés.
+#       La matrice des contraintes a une taille de O(m×(n+m))O(m×(n+m)) (en tenant compte des variables d'écart), et les vecteurs ZjZj, Cj−ZjCj−Zj,
+#       coef_pivotcoef_pivot, vdbvdb, et ratioratio ont une taille de O(n+m)O(n+m).
 
 # Conclusion
 #     Complexité temporelle : Dans le pire des cas, la complexité temporelle de la méthode du Simplexe est exponentielle, mais elle est souvent polynomiale.
 #     Complexité spatiale : La complexité spatiale est de O(m×(n+m))O(m×(n+m)), ce qui est gérable pour des problèmes de taille modérée.
 # =================================================================================================
+
+### **Modèle**
+# > variable **x1** <- (nombre d'heure/element) Elec 100 ; **x2** <- (nombre d'heure/element) Elec 200
+
+# 1. Function d'utilité est un bénef à maximiser:
+# 	*Z(x1, x2) = 100.x1 + 120.x2  *
+
+# **1er critère:** (choix de la valeur entrante)
+# > v.e <--> max { cj - Zj > 0}
+# > v. entrante : max {coef de Z}
+# 		= 120
+# 		v. entrante = x2
+
+# **2ème Critère:** (Determination de la v.entrante)
+# > V.sortante = min } Ri > 0 }
+
+# **3ème Critère:** (Condition d'arret)
+# > si Cj <--> Zj <= 0 alors le tableau est optimal
+# > La valeur de Z est l'optimale quand tous les coefs critère de Z sont négatifs
+
 
 # Fonction pour résoudre un problème d'optimisation linéaire Simplexe
 # coef: Coefficients de la fonction objectif
